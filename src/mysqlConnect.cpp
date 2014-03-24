@@ -44,3 +44,13 @@ bool tableExists(MYSQL * database, string tablename) {
 	return exists;
 }
 
+bool execQuery(MYSQL * database, std::string query) {
+	int failed = mysql_query(database, query.c_str());
+	if (failed) {
+		return false;
+	}
+	return true;
+}
+
+
+

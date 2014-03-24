@@ -10,14 +10,14 @@
 #include <iostream>
 using namespace std;
 
-int createClientSocket(char * ip, int port) {
+int createClientSocket(string & ip, int port) {
 	int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (clientSocket == -1) {
 		return -1;
 	}
 	struct sockaddr_in serverAddress;
 	memset(&serverAddress, 0, sizeof(serverAddress));
-	int success = inet_pton(AF_INET, ip, &serverAddress.sin_addr);
+	int success = inet_pton(AF_INET, ip.c_str(), &serverAddress.sin_addr);
 	if (!success) {
 		return -1;
 	}
@@ -64,12 +64,12 @@ int acceptClientSocket(int serverSocket) {
 	return clientSocket;
 }
 
-string readJSON(int socketfd, int bufferSize) {
+bool readJSON(int socketfd, int bufferSize,string & cmd) {
+	cmd.clear();
 	if (bufferSize <= 0) {
 		bufferSize = 4096;
 	}
 	int readCount;
-	string cmd;
 	char buff[bufferSize];
 	memset(buff, '\0', bufferSize);
 	int leftBrace = 0;
@@ -79,7 +79,7 @@ string readJSON(int socketfd, int bufferSize) {
 	while (1) {
 		readCount = recv(socketfd, buff, bufferSize, 0);
 		if (readCount <= 0) {
-			cout << "read failed" << endl;
+			clog << "read failed" << endl;
 			break;
 		} else {
 			int i = 0;
@@ -108,9 +108,9 @@ string readJSON(int socketfd, int bufferSize) {
 		}
 	}
 	if (find) {
-		return cmd;
+		return true;
 	} else {
-		return "";
+		return false;
 	}
 }
 

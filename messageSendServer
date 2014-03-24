@@ -1,0 +1,13 @@
+#!/bin/bash
+SERVER=./bin/msgsndd
+LSNPORT=9001
+SQLHOST=125.216.243.181
+SQLPORT=3306
+SQLDB=msg
+SQLUSER=root
+SQLPWD=123456
+LOG=./log/msgsndd.log
+
+if [ -x ${SERVER} ];then
+ ${SERVER} ${LSNPORT} ${SQLHOST} ${SQLPORT} ${SQLDB} ${SQLUSER} ${SQLPWD} 1>${LOG} 2>&1 &
+fi

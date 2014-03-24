@@ -9,8 +9,21 @@
 #define MYSQLCONNECT_H_
 
 #include <string>
+using std::string;
 
-MYSQL * msql_connect_db(std::string host,int port, std::string user,
-		std::string password, std::string dbs);
+/**
+ * 连接数据库服务器
+ */
+MYSQL * msql_connect_db(string host, int port, string user, string password,
+		string dbs);
+/**
+ * 检测某个表是否存在
+ */
+bool tableExists(MYSQL * database, string tablename);
+
+/**
+ * 执行一条sql语句
+ */
+bool execQuery(MYSQL * database, string query);
 
 #endif /* MYSQLCONNECT_H_ */

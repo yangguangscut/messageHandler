@@ -8,7 +8,8 @@
 #ifndef SOCKETCONNECT_H_
 #define SOCKETCONNECT_H_
 #include <string>
-using namespace std;
+using std::string;
+
 /* 创建一个服务器套接字
  port为端口号，backlog为服务器套接字准备accept的连接的数
  返回创建的套接字*/
@@ -22,8 +23,8 @@ int acceptClientSocket(int serverSocket);
 /**
  * 创建一个客户端套接字，该套接字已经连接了，可以直接从中读取或发送信息。
  */
-int createClientSocket(char * ip, int port);
+int createClientSocket(string & ip, int port);
 
-string readJSON(int socketfd,int bufferSize);
+bool readJSON(int socketfd, int bufferSize, string & cmd);
 
 #endif /* SOCKETCONNECT_H_ */

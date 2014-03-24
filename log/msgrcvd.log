@@ -1,0 +1,76 @@
+[OK] message receive server is initialized successfully.
+[OK] start message receive server, listen on port 9002
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+send success.
+database msg closed.
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+update message successful at1094
+send success.
+database msg closed.
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+update message successful at1095
+update message successful at1096
+update message successful at1097
+update message successful at1098
+update message successful at1099
+update message successful at1100
+update message successful at1101
+update message successful at1102
+update message successful at1103
+update message successful at1104
+send success.
+database msg closed.
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+update message successful at1110
+update message successful at1111
+update message successful at1112
+update message successful at1113
+update message successful at1114
+update message successful at1105
+update message successful at1106
+update message successful at1107
+update message successful at1108
+update message successful at1109
+send success.
+database msg closed.
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+send success.
+database msg closed.
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+update message successful at1115
+send success.
+database msg closed.
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+update message successful at1116
+update message successful at1117
+update message successful at1118
+update message successful at1119
+update message successful at1120
+update message successful at1121
+update message successful at1122
+update message successful at1123
+update message successful at1124
+update message successful at1125
+send success.
+database msg closed.
+[OK] catch a connect. now handle it.
+[OK] database msg inited.
+update message successful at1131
+update message successful at1132
+update message successful at1133
+update message successful at1134
+update message successful at1135
+update message successful at1126
+update message successful at1127
+update message successful at1128
+update message successful at1129
+update message successful at1130
+send success.
+database msg closed.

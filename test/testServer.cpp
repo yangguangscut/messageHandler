@@ -23,7 +23,8 @@
 using namespace std;
 // 处理客户端连接的线程。
 void * clientHandleThread(void *clientSocket) {
-	string cmd = readJSON(*(int *) clientSocket, -1);
+	string cmd;
+	readJSON(*(int *) clientSocket, -1, cmd);
 	cout << cmd << endl;
 
 	close(*(int *) clientSocket);

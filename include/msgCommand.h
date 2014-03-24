@@ -1,5 +1,5 @@
 /*
- * command.h
+ * msgCommand.h
  *
  *  Created on: Mar 22, 2014
  *      Author: yang
@@ -11,6 +11,7 @@
 using std::string;
 
 /**
+ * 接收消息命令的消息格式
  * receive message:
  * {
  * 		"action":"receiveMsg",
@@ -22,6 +23,7 @@ struct cmd_receiveMsg {
 };
 
 /**
+ * 发送消息命令的消息格式
  * send message:
  * {
  * 		"action":"sendMsg",

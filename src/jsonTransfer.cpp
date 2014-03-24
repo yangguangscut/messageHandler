@@ -14,11 +14,15 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
 #include "msgCommand.h"
+#include "jsonTransfer.h"
 using namespace boost::property_tree;
 using namespace std;
 
-cmd_receiveMsg * getReceiveMsgCmd(string json_str) {
+bool getReceiveMsgCmd(string & json_str, cmd_receiveMsg & cmd) {
 	stringstream ss(json_str);
 	ptree pt;
 	string cmd_type;
@@ -26,18 +30,21 @@ cmd_receiveMsg * getReceiveMsgCmd(string json_str) {
 		read_json(ss, pt);
 	} catch (ptree_error &e) {
 		cout << "read json error, json_str: " << json_str.c_str() << endl;
-		return NULL;
+		return false;
 	}
 	try {
-		cmd_receiveMsg * cmd = new cmd_receiveMsg;
-		cmd->userID = pt.get<string>("id");
-		return cmd;
+		cmd_type = pt.get<string>("action");
+		if ("receiveMsg" == cmd_type) {
+			cmd.userID = pt.get<string>("id");
+			return true;
+		}
+		return false;
 	} catch (ptree_error & e) {
-		return NULL;
+		return false;
 	}
 }
 
-cmd_sendMsg * getSendMsgCmd(string json_str) {
+bool getSendMsgCmd(string & json_str, cmd_sendMsg & cmd) {
 	stringstream ss(json_str);
 	ptree pt;
 	string cmd_type;
@@ -45,17 +52,19 @@ cmd_sendMsg * getSendMsgCmd(string json_str) {
 		read_json(ss, pt);
 	} catch (ptree_error &e) {
 		cout << "read json error, json_str: " << json_str.c_str() << endl;
-		return NULL;
+		return false;
 	}
 	try {
+		cmd_type = pt.get<string>("action");
+		if ("sendMsg" == cmd_type) {
+			cmd.fromUserId = pt.get<string>("from");
+			cmd.toUserId = pt.get<string>("to");
+			cmd.message = pt.get<string>("msg");
+			return true;
+		}
+		return false;
 
-		cmd_sendMsg * cmd = new cmd_sendMsg;
-		cmd->fromUserId = pt.get<string>("from");
-		cmd->toUserId = pt.get<string>("to");
-		cmd->message = pt.get<string>("msg");
-		return cmd;
 	} catch (ptree_error & e) {
-		return NULL;
+		return false;
 	}
-
 }
