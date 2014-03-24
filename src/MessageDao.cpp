@@ -45,7 +45,7 @@ bool MessageDao::addMsg(string & from, string & to, string & msg) {
 		clog << "database doesn't exist!" << endl;
 		return false;
 	}
-	string tableName = "u" + to;
+	string tableName = "msg_" + to;
 	// 1. 查看用户的表是否存在
 	bool exists = tableExists(this->database, tableName);
 	if (!exists) {
